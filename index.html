@@ -1,0 +1,415 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VoyageAI - Demo</title>
+<link rel="stylesheet" href ="style.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    transition:0.5s;
+    color:white;
+}
+
+.page{
+    display:none;
+    min-height:100vh;
+    padding:40px;
+}
+
+.active{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:20px;
+    font-size:16px;
+}
+
+.card{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    padding:20px;
+    border-radius:20px;
+    margin:10px;
+    width:250px;
+    text-align:center;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.features{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:40px;
+}
+
+.hero{
+    text-align:center;
+}
+
+.hero h1{
+    font-size:4rem;
+}
+
+.hero p{
+    margin-top:10px;
+}
+
+.form{
+    width:400px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    padding:25px;
+    border-radius:20px;
+}
+
+.form input,
+.form select{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+}
+
+.result-container{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.day{
+    width:280px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    border-radius:15px;
+    padding:20px;
+}
+
+.timeline{
+    margin-top:10px;
+}
+
+.timeline p{
+    margin:10px 0;
+}
+
+.fade{
+    animation:fade 1s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.goa{
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+}
+
+.manali{
+background:linear-gradient(135deg,#d9e4f5,#6dd5fa);
+color:black;
+}
+
+.tokyo{
+background:linear-gradient(135deg,#141e30,#243b55);
+}
+
+.jaisalmer{
+background:linear-gradient(135deg,#f7971e,#ffd200);
+color:black;
+}
+</style>
+</head>
+
+<body class="goa">
+
+<!-- PAGE 1 -->
+ <!--
+<section id="page1" class="page active fade">
+
+<div class="hero">
+<h1>🌍 VoyageAI</h1>
+<p>Plan Smarter. Travel Better.</p>
+
+<div class="features">
+
+<div class="card">
+<h3>🤖 AI Planning</h3>
+<p>Personalized itinerary generation.</p>
+</div>
+
+<div class="card">
+<h3>🎨 Adaptive UI</h3>
+<p>Theme changes based on destination.</p>
+</div>
+
+<div class="card">
+<h3>🌦 Weather Smart</h3>
+<p>Context-aware recommendations.</p>
+</div>
+
+<div class="card">
+<h3>🗺 Route Optimization</h3>
+<p>Efficient travel scheduling.</p>
+</div>
+
+</div>
+
+<button onclick="showPage(2)">
+Start Planning →
+</button>
+</div>
+
+</section>
+
+ PAGE 2 
+<section id="page2" class="page fade">
+
+<div class="form">
+
+<h2>Create Your Trip</h2>
+
+<select id="destination" onchange="changeTheme()">
+<option value="goa">Goa</option>
+<option value="manali">Manali</option>
+<option value="tokyo">Tokyo</option>
+<option value="jaisalmer">Jaisalmer</option>
+</select>
+<div class="sand"></div>
+
+<select>
+<option>Low Budget</option>
+<option>Medium Budget</option>
+<option>High Budget</option>
+</select>
+
+<input type="number" placeholder="Duration (Days)">
+
+<input type="text" placeholder="Interests">
+
+<select>
+<option>Relaxed</option>
+<option>Moderate</option>
+<option>Packed</option>
+</select>
+
+<button onclick="showPage(3)">
+Generate Trip →
+</button>
+
+</div>
+
+</section>
+
+ PAGE 3 
+<section id="page3" class="page fade">
+
+<h1>Your AI Itinerary</h1>
+
+<div class="result-container">
+
+<div class="day">
+<h2>Day 1</h2>
+
+<div class="timeline">
+<p>09:00 ☕ Breakfast</p>
+<p>10:00 🏖 Main Attraction</p>
+<p>13:00 🍔 Lunch</p>
+<p>16:00 🏛 Sightseeing</p>
+<p>20:00 🌆 Evening Activity</p>
+</div>
+</div>
+
+<div class="day">
+<h2>Day 2</h2>
+
+<div class="timeline">
+<p>09:00 ☕ Breakfast</p>
+<p>10:00 🎯 Activity</p>
+<p>13:00 🍴 Lunch</p>
+<p>16:00 🚗 Exploration</p>
+<p>20:00 🎵 Entertainment</p>
+</div>
+</div>
+
+</div>
+
+<button onclick="showPage(1)">
+← Back Home
+</button>
+
+</section>
+
+<script>
+
+function showPage(page){
+
+document.querySelectorAll(".page")
+.forEach(p=>p.classList.remove("active"));
+
+document
+.getElementById("page"+page)
+.classList.add("active");
+
+}
+
+function changeTheme(){
+
+let value =
+document.getElementById("destination").value;
+
+document.body.className=value;
+
+}
+
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripGenius</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <i class="fa-solid fa-earth-americas"></i>
+        <span>TripGenius</span>
+    </div>
+</header>
+
+<section class="hero">
+
+    <div class="slider">
+
+        <div class="slide active">
+            <img src="mountain.jpg" alt="Mountain">
+        </div>
+
+        <div class="slide">
+            <img src="beach.jpg" alt="Beach">
+        </div>
+
+        <div class="slide">
+            <img src="desert.jpg" alt="Desert">
+        </div>
+
+        <div class="slide">
+            <img src="city.jpg" alt="City">
+        </div>
+
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+
+    </div>
+
+    <div class="hero-content">
+        <h1>Plan Smarter.<br>Travel Better.</h1>
+
+        <p>Your AI Powered Travel Companion</p>
+
+        <button class="btn" onclick="window.location.href='Login/login.html'">
+    Start Planning
+</button>
+    </div>
+
+</section>
+
+<section class="features-section">
+
+    <div class="floating-bg">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <h2 class="feature-heading">
+        Why Choose TripGenius?
+    </h2>
+
+    <div class="features-grid">
+
+        <div class="feature-card">
+            <div class="feature-icon">🧳</div>
+            <h3>Personalized Travel Experiences</h3>
+            <p>Custom itineraries based on your budget, interests and travel style.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⏱</div>
+            <h3>Save Hours of Planning</h3>
+            <p>Generate complete travel plans instantly without endless searching.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📍</div>
+            <h3>Discover Hidden Gems</h3>
+            <p>Explore local treasures beyond typical tourist destinations.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>AI-Powered Recommendations</h3>
+            <p>Smart suggestions based on weather, preferences and trends.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🌦️</div>
+            <h3>Real-Time Travel Insights</h3>
+            <p>Get recommendations based on weather, local events, crowd levels and seasonal conditions.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
