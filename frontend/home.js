@@ -34,7 +34,7 @@ function selectDestination(name) {
 }
 
 async function getUserInfo() {
-    const response = await fetch("http://localhost:8000/api/auth/me", {
+    const response = await fetch("https://trip-genius.onrender.com/api/auth/me", {
         method: "GET",
         headers: { "Authorization": "Bearer " + token }
     });
@@ -47,7 +47,7 @@ async function getUserInfo() {
 }
 
 async function getTrips() {
-    const response = await fetch("http://localhost:8000/api/trips", {
+    const response = await fetch("https://trip-genius.onrender.com/api/trips", {
         method: "GET",
         headers: { "Authorization": "Bearer " + token }
     });
@@ -81,7 +81,7 @@ document.getElementById("createTrip").addEventListener("click", async function()
     const interests = document.getElementById("interests").value.split(",").map(i => i.trim());
     const travelPace = document.getElementById("travelPace").value;
 
-    const response = await fetch("http://localhost:8000/api/trips", {
+    const response = await fetch("https://trip-genius.onrender.com/api/trips", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -99,7 +99,7 @@ document.getElementById("createTrip").addEventListener("click", async function()
 });
 
 async function deleteTrip(id) {
-    const response = await fetch("http://localhost:8000/api/trips/" + id, {
+    const response = await fetch("https://trip-genius.onrender.com/api/trips/" + id, {
         method: "DELETE",
         headers: { "Authorization": "Bearer " + token }
     });

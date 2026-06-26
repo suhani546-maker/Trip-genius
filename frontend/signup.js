@@ -6,7 +6,7 @@ document.getElementById("signupbtn").addEventListener("click", async function(e)
     const password = document.getElementById("password").value;
 
     try {
-        const response = await fetch("http://localhost:8000/api/auth/signup", {
+        const response = await fetch("https://trip-genius.onrender.com/api/auth/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

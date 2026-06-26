@@ -18,7 +18,7 @@ function applyTheme(theme) {
 
 async function loadTrip() {
     try {
-        const response = await fetch("http://localhost:8000/api/trips", {
+        const response = await fetch("https://trip-genius.onrender.com/api/trips", {
             method: "GET",
             headers: { "Authorization": "Bearer " + token }
         });
@@ -35,7 +35,7 @@ async function loadTrip() {
             "Packing your bags for " + trip.destination;
 
         // Start the AI call immediately (it takes a few seconds anyway)
-        const aiPromise = fetch("http://localhost:8000/api/itinerary/generate", {
+        const aiPromise = fetch("https://trip-genius.onrender.com/api/itinerary/generate", {  // ✅
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
