@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TripGenius - Explore</title>
+<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="#" class="logo">
+        <i class="fa-solid fa-earth-americas earth"></i>
+        <h3>TripGenius</h3>
+    </a>
+    <div class="nav-right">
+        <span id="welcomeUser">Welcome!</span>
+        <button id="logoutbtn">Logout</button>
+    </div>
+</header>
+
+<section class="hero-search">
+    <h1>Where do you want to go?</h1>
+    <p>Discover your next adventure with TripGenius</p>
+    <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchDestination" placeholder="Search destinations...">
+    </div>
+</section>
+
+<section class="destinations">
+    <h2>Popular Destinations</h2>
+    <div class="destination-grid" id="destinationGrid"></div>
+</section>
+
+<section class="trip-form-section">
+    <h2>Plan Your Trip</h2>
+    <div class="trip-form">
+        <div class="input-box">
+            <label>Destination</label>
+            <input type="text" id="destination" placeholder="e.g. Goa">
+        </div>
+        <div class="input-box">
+            <label>Budget (₹)</label>
+            <input type="number" id="budget" placeholder="e.g. 10000">
+        </div>
+        <div class="input-box">
+            <label>Duration (days)</label>
+            <input type="number" id="duration" placeholder="e.g. 5">
+        </div>
+        <div class="input-box">
+            <label>Interests</label>
+            <input type="text" id="interests" placeholder="beach, food, adventure">
+        </div>
+        <div class="input-box">
+            <label>Travel Pace</label>
+            <select id="travelPace">
+                <option value="slow">Slow</option>
+                <option value="moderate">Moderate</option>
+                <option value="fast">Fast</option>
+            </select>
+        </div>
+        <button id="createTrip">Create My Trip</button>
+    </div>
+</section>
+
+<section class="my-trips">
+    <h2>My Trips</h2>
+    <div id="tripsList"></div>
+</section>
+
+<script src="home.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TripGenius - Your Itinerary</title>
+<link rel="stylesheet" href="itinerary.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body id="itineraryBody">
+
+<header class="navbar">
+    <a href="home.html" class="logo">
+        <i class="fa-solid fa-earth-americas earth"></i>
+        <h3>TripGenius</h3>
+    </a>
+    <a href="home.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+    </a>
+</header>
+
+<div id="loadingScreen" class="loading-screen">
+    <div class="spinner"></div>
+    <h2>Generating your personalized itinerary...</h2>
+    <p id="loadingDestText">Packing your bags for somewhere amazing</p>
+</div>
+
+<div id="resultScreen" class="result-screen" style="display:none;">
+    <section class="trip-hero">
+        <h1 id="tripTitle"></h1>
+        <div class="trip-meta" id="tripMeta"></div>
+    </section>
+
+    <section class="itinerary-section">
+        <div id="itineraryContent" class="itinerary-box"></div>
+    </section>
+</div>
+
+<script src="itinerary.js"></script>
+</body>
+</html>
