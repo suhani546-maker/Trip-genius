@@ -1,7 +1,7 @@
 const token = localStorage.getItem("token");
 
 if (!token) {
-    window.location.href = "/frontend/login.html";
+    window.location.href = "/login.html";
 }
 
 // Get tripId from URL
@@ -27,7 +27,7 @@ async function loadTrip() {
 
         if (!trip) {
             alert("Trip not found!");
-            window.location.href = "/frontend/home.html";
+            window.location.href = "/home.html";
             return;
         }
 

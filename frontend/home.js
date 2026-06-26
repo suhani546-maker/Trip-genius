@@ -1,7 +1,7 @@
 const token = localStorage.getItem("token");
 
 if (!token) {
-    window.location.href = "/frontend/login.html";
+    window.location.href = "/login.html";
 }
 
 const popularDestinations = [
@@ -42,7 +42,7 @@ async function getUserInfo() {
     if (response.ok) {
         document.getElementById("welcomeUser").textContent = "Welcome, " + data.name + "!";
     } else {
-        window.location.href = "/frontend/login.html";
+        window.location.href = "/login.html";
     }
 }
 
@@ -92,7 +92,7 @@ document.getElementById("createTrip").addEventListener("click", async function()
 
     const data = await response.json();
     if (response.ok) {
-        window.location.href = "/frontend/itinerary.html?tripId=" + data.trip._id;
+        window.location.href = "/itinerary.html?tripId=" + data.trip._id;
     } else {
         alert(data.message);
     }
@@ -114,7 +114,7 @@ async function deleteTrip(id) {
 
 document.getElementById("logoutbtn").addEventListener("click", function() {
     localStorage.removeItem("token");
-    window.location.href = "/frontend/login.html";
+    window.location.href = "/login.html";
 });
 
 loadDestinations();
