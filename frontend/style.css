@@ -194,3 +194,32 @@ header{
 
     text-align:center;
 }
+@media (max-width: 768px) {
+    .hero-tagline {
+        font-size: 2rem !important;
+        top: 15% !important;
+        width: 90% !important;
+    }
+
+    .feature-content {
+        width: 85% !important;
+        padding: 20px !important;
+        top: 58% !important;
+    }
+
+    .feature-content h2 {
+        font-size: 1.3rem !important;
+    }
+
+    .feature-content p {
+        font-size: 13px !important;
+    }
+
+    .prev {
+        left: 5px !important;
+    }
+
+    .next {
+        right: 5px !important;
+    }
+}
