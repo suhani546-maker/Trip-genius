@@ -188,4 +188,38 @@ body {
     background-size: cover !important;
     background-position: center 50% !important;
     background-attachment: fixed !important;
+}@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .trip-hero h1 {
+        font-size: 32px;
+    }
+
+    .trip-meta {
+        gap: 10px;
+        padding: 0 15px;
+    }
+
+    .trip-meta span {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+
+    .itinerary-section {
+        padding: 20px 15px 60px;
+    }
+
+    .itinerary-box {
+        padding: 20px;
+    }
+
+    .day-block h3 {
+        font-size: 18px;
+    }
+
+    .loading-screen h2 {
+        font-size: 22px;
+    }
 }

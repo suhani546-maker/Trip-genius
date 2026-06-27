@@ -295,4 +295,38 @@ body {
 
 .trip-card button:hover {
     background: #c9302c;
+}@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .hero-search h1 {
+        font-size: 32px;
+    }
+
+    .search-box {
+        width: 90%;
+    }
+
+    .destination-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .trip-form {
+        padding: 20px;
+        margin: 0 15px;
+    }
+
+    .destinations {
+        padding: 30px 20px;
+    }
+
+    .trip-form-section {
+        padding: 40px 20px;
+    }
+
+    .my-trips {
+        padding: 30px 20px;
+    }
 }

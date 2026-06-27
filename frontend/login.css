@@ -249,3 +249,31 @@ background:rgba(255,255,255,0.1);
     text-decoration:underline;
 }
 
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .home {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .content {
+        display: none;
+    }
+
+    .login {
+        width: 90%;
+        margin: auto;
+        padding: 30px 20px;
+    }
+
+    .login h2 {
+        font-size: 24px;
+    }
+}
