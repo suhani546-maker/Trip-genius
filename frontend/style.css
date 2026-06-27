@@ -100,20 +100,6 @@ header{
 
 
 
-@media(max-width:768px){
-
-.feature-content{
-    left:20px;
-    right:20px;
-    bottom:100px;
-}
-
-.feature-content h2{
-    font-size:1.5rem;
-}
-
-}
-
 .feature-content{
     position:absolute;
 
