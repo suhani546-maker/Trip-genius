@@ -105,3 +105,35 @@ function showResults(trip, rawItinerary) {
 }
 
 loadTrip();
+
+// PDF Download Feature
+
+const pdfScript = document.createElement("script");
+pdfScript.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+
+pdfScript.onload = function () {
+
+    document.getElementById("downloadPDF").addEventListener("click", function () {
+
+        const { jsPDF } = window.jspdf;
+
+        const doc = new jsPDF();
+
+        doc.setFontSize(20);
+        doc.text("TripGenius Itinerary", 20, 20);
+
+        doc.setFontSize(12);
+
+        let itineraryText = document.getElementById("itineraryContent").innerText;
+
+        let lines = doc.splitTextToSize(itineraryText, 170);
+
+        doc.text(lines, 20, 40);
+
+        doc.save("TripGenius-Itinerary.pdf");
+
+    });
+
+};
+
+document.head.appendChild(pdfScript);
