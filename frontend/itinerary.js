@@ -108,12 +108,14 @@ loadTrip();
 
 // PDF Download Feature
 
+// PDF Download Feature
+
 const pdfScript = document.createElement("script");
 pdfScript.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
 
 pdfScript.onload = function () {
 
-    document.getElementById("downloadPDF").addEventListener("click", function () {
+    document.getElementById("downloadPDF").onclick = function () {
 
         const { jsPDF } = window.jspdf;
 
@@ -124,15 +126,17 @@ pdfScript.onload = function () {
 
         doc.setFontSize(12);
 
-        let itineraryText = document.getElementById("itineraryContent").innerText;
+        const title = document.getElementById("tripTitle").innerText;
+        const itinerary = document.getElementById("itineraryContent").innerText;
 
-        let lines = doc.splitTextToSize(itineraryText, 170);
+        doc.text("Destination: " + title, 20, 40);
 
-        doc.text(lines, 20, 40);
+        let lines = doc.splitTextToSize(itinerary, 170);
+
+        doc.text(lines, 20, 60);
 
         doc.save("TripGenius-Itinerary.pdf");
-
-    });
+    };
 
 };
 
