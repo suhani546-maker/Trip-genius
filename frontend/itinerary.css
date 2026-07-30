@@ -223,3 +223,29 @@ body {
         font-size: 22px;
     }
 }
+/* //adding extra code here  */
+.weather-suggestion {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+}
+
+.weather-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.weather-text {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.weather-text strong {
+    color: #f5c518;
+}
