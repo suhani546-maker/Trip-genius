@@ -1,3 +1,4 @@
+
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
@@ -15,7 +16,11 @@ function authMiddleware(req, res, next) {
 
 router.post("/generate", authMiddleware, async (req, res) => {
     try {
-        const { destination, budget, duration, interests, travelPace } = req.body;
+        const { destination, budget, duration, interests, travelPace, weatherForecast } = req.body;
+
+        const weatherContext = weatherForecast
+            ? `\n\nHere is the real weather forecast for this trip:\n${weatherForecast}\n\nIMPORTANT: Plan each day's activities around this forecast. On rainy, stormy, or snowy days, prioritize indoor activities (museums, cafés, indoor markets, galleries). On clear or sunny days, prioritize outdoor activities (gardens, parks, viewpoints, hikes, sightseeing).`
+            : "";
 
         const prompt = `You are a travel planner. For the destination "${destination}", do two things:
 
@@ -24,7 +29,7 @@ router.post("/generate", authMiddleware, async (req, res) => {
 2. Generate a detailed ${duration}-day travel itinerary.
 Budget: ₹${budget}
 Interests: ${interests.join(", ")}
-Travel Pace: ${travelPace}
+Travel Pace: ${travelPace}${weatherContext}
 
 Respond in EXACTLY this format, nothing else:
 
@@ -43,6 +48,8 @@ Evening - activity
 (continue for all ${duration} days)
 
 Keep it realistic, practical, and within budget. No extra explanation outside this format.`;
+
+        // ... rest of your function stays exactly the same
 
         const response = await fetch("https://router.huggingface.co/v1/chat/completions", {
             method: "POST",
