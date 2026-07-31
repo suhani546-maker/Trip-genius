@@ -85,9 +85,11 @@ const fullText = data[0].generated_text;
 
         res.status(200).json({ itinerary: itineraryText, theme: theme });
 
-    } catch (err) {
-        res.status(500).json({ message: "Something went wrong!", error: err.message });
-    }
+    }  catch (err) {
+    console.error("Full error:", err);
+    console.error("Cause:", err.cause);
+    res.status(500).json({ message: "Something went wrong!", error: err.message, cause: err.cause ? String(err.cause) : null });
+}
 });
 
 module.exports = router;
