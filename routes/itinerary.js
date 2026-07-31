@@ -58,7 +58,7 @@ Keep it realistic, practical, and within budget. No extra explanation outside th
                 "Authorization": "Bearer " + process.env.HF_API_KEY
             },
             body: JSON.stringify({
-                model: "moonshotai/Kimi-K2-Instruct-0905",
+                model: "mistralai/Mistral-7B-Instruct-v0.2",
                 messages: [{ role: "user", content: prompt }]
             })
         });
