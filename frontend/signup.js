@@ -27,3 +27,4 @@ document.getElementById("signupbtn").addEventListener("click", async function(e)
         alert("Something went wrong!");
     }
 });
+
