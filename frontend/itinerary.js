@@ -1,5 +1,3 @@
-
-      
 const token = localStorage.getItem("token");
 
 if (!token) {
@@ -364,6 +362,3 @@ document.getElementById("showMapBtn").addEventListener("click", function() {
         showMap(window.currentTrip, window.currentItinerary);
     }
 });
-
-
-
