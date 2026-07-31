@@ -51,27 +51,26 @@ Keep it realistic, practical, and within budget. No extra explanation outside th
 
         // ... rest of your function stays exactly the same
 
-       const response = await fetch("https://router.huggingface.co/v1/chat/completions", {
+       const response = await fetch("https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3", {
     method: "POST",
     headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer " + process.env.HF_API_KEY
     },
     body: JSON.stringify({
-        model: "moonshotai/Kimi-K2-Instruct-0905",
-        messages: [{ role: "user", content: prompt }]
+        inputs: prompt,
+        parameters: { max_new_tokens: 1024, return_full_text: false }
     })
 });
 
 const data = await response.json();
 
-// ADD THIS — log + surface the real error instead of crashing blind
-if (!response.ok || !data.choices) {
+if (!response.ok || !Array.isArray(data) || !data[0]?.generated_text) {
     console.error("HF API error:", JSON.stringify(data));
     return res.status(500).json({ message: "AI generation failed", error: data.error || data });
 }
 
-const fullText = data.choices[0].message.content;
+const fullText = data[0].generated_text;
 
         // Split theme from itinerary
         const parts = fullText.split("---");
