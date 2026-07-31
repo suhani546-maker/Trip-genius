@@ -194,8 +194,7 @@ body {
     }
 
     .trip-hero h1 {
-        font-size: 32px;
-    }
+        font-size: 32px;   }
 
     .trip-meta {
         gap: 10px;
@@ -221,7 +220,142 @@ body {
 
     .loading-screen h2 {
         font-size: 22px;
+    }  }
+
+
+    .pdf-btn-container {
+    text-align: center;
+    padding: 30px 40px 60px;
+}
+
+/* adding extra code  */
+/* ===== Map Button ===== */
+#mapBtnContainer {
+    padding: 10px 40px 50px;
+}
+
+#showMapBtn {
+    background: linear-gradient(135deg, #f5c518, #e0a800);
+    color: #0a1a3a;
+    border: none;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(245, 197, 24, 0.35);
+    transition: 0.25s ease;
+    letter-spacing: 0.3px;
+}
+
+#showMapBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(245, 197, 24, 0.5);
+}
+
+#showMapBtn:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ===== Map Section ===== */
+#mapSection {
+    padding: 0 40px 90px;
+}
+
+.map-wrapper {
+    max-width: 950px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    padding: 30px;
+    color: white;
+    text-align: center;
+}
+
+.map-title {
+    color: #f5c518;
+    font-size: 26px;
+    margin-bottom: 6px;
+}
+
+.map-subtitle {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+#map {
+    width: 100%;
+    height: 500px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Leaflet popup restyle to match theme */
+.leaflet-popup-content-wrapper {
+    background: rgba(10, 20, 40, 0.9);
+    color: white;
+    border-radius: 12px;
+}
+
+.leaflet-popup-tip {
+    background: rgba(10, 20, 40, 0.9);
+}
+
+.leaflet-popup-content b {
+    color: #f5c518;
+}
+
+@media (max-width: 768px) {
+    #mapSection {
+        padding: 0 15px 60px;
     }
+
+    .map-wrapper {
+        padding: 18px;
+    }
+
+    #map {
+        height: 350px;
+    }
+
+    .map-title {
+        font-size: 20px;
+    }
+
+    #showMapBtn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+}
+#downloadPdfBtn {
+    background: linear-gradient(135deg, #f5c518, #e0a800);
+    color: #0a1a3a;
+    border: none;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(245, 197, 24, 0.35);
+    transition: 0.25s ease;
+}
+
+#downloadPdfBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(245, 197, 24, 0.5);
+}
+
+#downloadPdfBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
 }
 /* //adding extra code here  */
 .weather-suggestion {
@@ -249,6 +383,7 @@ body {
 .weather-text strong {
     color: #f5c518;
 }
+
 /* Smooth hover effect for the summary pills in itinerary */
 #tripMeta > * {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
