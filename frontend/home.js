@@ -1,9 +1,28 @@
 const token = localStorage.getItem("token");
 
 if (!token) {
-    window.location.href = "/login.html";
+    window.location.href = "login.html";
 }
+//adding extra here 
+ 
+function showToast(message, type = '', duration = 3000) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
 
+    const toast = document.createElement('div');
+    // This allows the base 'toast' class plus whatever type you pass (like 'danger')
+    toast.className = `toast ${type}`.trim(); 
+    toast.innerText = message;
+
+    container.appendChild(toast);
+
+    setTimeout(() => { toast.classList.add('show'); }, 10);
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => { toast.remove(); }, 300);
+    }, duration);
+}
 const popularDestinations = [
     { name: "Goa", image: "images/beach.jpg" },
     { name: "Manali", image: "images/mountain.jpg" },
@@ -40,9 +59,22 @@ async function getUserInfo() {
     });
     const data = await response.json();
     if (response.ok) {
-        document.getElementById("welcomeUser").textContent = "Welcome, " + data.name + "!";
+        // Get the current hour of the user's local clock
+        const hour = new Date().getHours();
+        let greeting = "Welcome";
+        
+        if (hour < 12) {
+            greeting = "Good morning";
+        } else if (hour < 18) {
+            greeting = "Good afternoon";
+        } else {
+            greeting = "Good evening";
+        }
+
+        // Set the dynamic greeting + their name
+        document.getElementById("welcomeUser").textContent = `${greeting}, ${data.name}!`;
     } else {
-        window.location.href = "/login.html";
+        window.location.href = "login.html";
     }
 }
 
@@ -64,7 +96,7 @@ async function getTrips() {
         tripsList.innerHTML += `
             <div class="trip-card">
                 <h3>${trip.destination}</h3>
-                <p>Budget: ₹${trip.budget}</p>
+                <p>Budget: ₹${Number(trip.budget).toLocaleString('en-IN')}</p>
                 <p>Duration: ${trip.duration} days</p>
                 <p>Interests: ${trip.interests.join(", ")}</p>
                 <p>Pace: ${trip.travelPace}</p>
@@ -90,12 +122,33 @@ document.getElementById("createTrip").addEventListener("click", async function()
         body: JSON.stringify({ destination, budget, duration, interests, travelPace })
     });
 
-    const data = await response.json();
+     const data = await response.json();
     if (response.ok) {
-        window.location.href = "/itinerary.html?tripId=" + data.trip._id;
+        window.location.href = "itinerary.html?tripId=" + data.trip._id;
     } else {
-        alert(data.message);
+        // Replacing the alert with a toast here too
+        showToast(data.message || "Failed to create trip", "danger");
     }
+});
+document.getElementById("demoFillBtn").addEventListener("click", () => {
+    // A list of cool preset options to mix it up!
+    const demos = [
+        { dest: "Goa", budget: "25000", duration: "4", interests: "beaches, seafood, nightlife", pace: "moderate" },
+        { dest: "Manali", budget: "30000", duration: "5", interests: "snow, mountains, cafes", pace: "relaxed" },
+        { dest: "Jaipur", budget: "20000", duration: "3", interests: "palaces, history, street food", pace: "fast" }
+    ];
+
+    // Pick a random demo from the list
+    const randomDemo = demos[Math.floor(Math.random() * demos.length)];
+
+    // Fill the inputs
+    document.getElementById("destination").value = randomDemo.dest;
+    document.getElementById("budget").value = randomDemo.budget;
+    document.getElementById("duration").value = randomDemo.duration;
+    document.getElementById("interests").value = randomDemo.interests;
+    document.getElementById("travelPace").value = randomDemo.pace;
+
+    showToast(`Demo loaded: ${randomDemo.dest}!`);
 });
 
 async function deleteTrip(id) {
@@ -105,16 +158,18 @@ async function deleteTrip(id) {
     });
     const data = await response.json();
     if (response.ok) {
-        alert("Trip deleted!");
+        showToast("Trip deleted!", "danger"); 
         getTrips();
     } else {
-        alert(data.message);
+        // Now errors will also show as a red toast instead of a popup!
+        showToast(data.message || "Failed to delete trip", "danger");
     }
 }
 
+
 document.getElementById("logoutbtn").addEventListener("click", function() {
     localStorage.removeItem("token");
-    window.location.href = "/login.html";
+    window.location.href = "login.html";
 });
 
 loadDestinations();
