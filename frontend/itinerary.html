@@ -1,14 +1,19 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TripGenius - Your Itinerary</title>
 <link rel="stylesheet" href="itinerary.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body id="itineraryBody">
+    
 
 <header class="navbar">
     <a href="home.html" class="logo">
@@ -33,18 +38,30 @@
     </section>
 
     <section class="itinerary-section">
-    <div id="itineraryContent" class="itinerary-box"></div>
+        <div id="itineraryContent" class="itinerary-box"></div>
+        
+    </section>
+    
 
-    <button id="downloadPDF">
-        Download PDF
+
+
+
+<div id="mapBtnContainer" style="display:none; text-align:center; padding: 20px 40px;">
+    <button id="showMapBtn">
+        <i class="fa-solid fa-map-location-dot"></i> View Itinerary on Map
     </button>
-</section>
+</div>
 
-   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<div id="mapSection" style="display:none;">
+    <div class="map-wrapper">
+        <h2 class="map-title">📍 Your Itinerary on Map</h2>
+        <p class="map-subtitle">Click any pin to see the activity!</p>
+        <div id="map"></div>
+    </div>
+</div>
 
 
 <script src="itinerary.js"></script>
 </body>
-</html>
+</html> 
+
